@@ -1,0 +1,131 @@
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+}
+
+@keyframes moveBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -100%;
+  }
+}
+
+body {
+  /* background-image: url("./files/media/download.jpg"); */
+  background-image: url("./files/backgrounds/download\ \(1\).jpg");
+  background-repeat: repeat;
+  animation: moveBackground 10ms linear infinite;
+  /* Move speed - Ns */
+}
+
+* {
+  font-family: "Press Start 2P";
+  font-size: x-large;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  image-resolution: 400, 400;
+}
+
+div.container {
+  perspective: 1px;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective-origin: 100% initial;
+}
+
+div.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform-origin: 100% initial;
+  word-wrap: break-word;
+}
+
+div.layer > span,
+div.layer > img {
+  pointer-events: none;
+}
+
+div#layer-1 {
+  position: absolute;
+  left: 30px;
+  top: 10px;
+  width: 400px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+div#layer-2 {
+  z-index: 4;
+  transform: translateZ(0);
+}
+
+div#layer-3 {
+  z-index: 3;
+  transform: translateZ(-0.1px) scale(1.1);
+}
+
+div#layer-4 {
+  z-index: 2;
+  transform: translateZ(-0.2px) scale(1.2);
+}
+
+div#layer-5 {
+  z-index: 1;
+  transform: translateZ(-0.3px) scale(1.3);
+}
+
+div#video {
+  position: absolute;
+  top: 30px;
+  left: 65px;
+  right: 0;
+  bottom: 0;
+  width: 640px;
+  height: 480px;
+  z-index: 3;
+  transform: translateZ(-0.2px) scale(1.2);
+}
+
+div#video video {
+  width: 100%;
+  height: 100%;
+}
+
+div#primitives {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+div#primitives img {
+  max-width: 100px;
+  -webkit-filter: drop-shadow(0 0 30px rgb(255, 196, 0))
+    drop-shadow(10px 5px 5px #000);
+  filter: drop-shadow(0 0 30px rgb(255, 196, 0)) drop-shadow(10px 5px 5px #000);
+  transition: transform 150ms ease-in-out;
+}
+
+div#primitives a:hover img {
+  transform: scale(1.5) translateY(-20px);
+}
+
+@media (max-width: 640px) {
+  div#primitives img {
+    max-width: 75px;
+  }
+}
